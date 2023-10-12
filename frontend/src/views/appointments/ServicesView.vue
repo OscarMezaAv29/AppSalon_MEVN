@@ -1,5 +1,6 @@
 <script setup>
-
+  import { useServicesSrore } from '../../stores/services'
+  const services = useServicesSrore()
 </script>
 
 <template>
