@@ -4,6 +4,7 @@ import { ref,computed } from "vue";
 export const useAppointmentsStore = defineStore('appointments', () => {
 
     const services= ref([])
+    const date = ref('')
 
 
     function onServiceSelected(service) {
@@ -29,9 +30,10 @@ export const useAppointmentsStore = defineStore('appointments', () => {
     })
 
     return {
+        services,
+        date,
         onServiceSelected,
         isServiceSelected,
-        services,
         noServicesSelected,
         totalAmount
     }

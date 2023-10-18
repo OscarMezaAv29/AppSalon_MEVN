@@ -1,10 +1,16 @@
 <script setup>
+  import { ref } from 'vue';
   import VueTailwindDatepicker from 'vue-tailwind-datepicker';
   import SelectedService from '../../components/SelectedService.vue';
   import { formatCurrency } from '../../helpers';
   import { useAppointmentsStore } from '../../stores/appointments';
 
   const appointments = useAppointmentsStore()
+
+  const formatter = ref({
+    date: 'DD/MM/YYYY',
+    month: 'MMM'
+  })
 </script>
 
 <template>
@@ -34,6 +40,8 @@
           i18n="es-mx"
           as-single
           no-input
+          :formatter="formatter"
+          v-model="appointments.date"
         />
       </div>
       <div>
