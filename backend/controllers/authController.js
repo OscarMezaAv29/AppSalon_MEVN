@@ -23,6 +23,14 @@ const register = async (req, res) => {
     }
 
     // validar la extensión del password
+    const MIN_PASSWORD_LENGTH = 8
+    if(password.trim().length < MIN_PASSWORD_LENGTH) {
+        const error = new Error(`El password debe contener al menos ${MIN_PASSWORD_LENGTH} caracteres`)
+
+        return res.status(400).json({
+            msg: error.message
+        })
+    }
 
     try {
         const user = new User(req.body)
