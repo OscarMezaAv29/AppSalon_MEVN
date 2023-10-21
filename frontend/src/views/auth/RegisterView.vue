@@ -10,11 +10,22 @@
 
     <FormKit
       type="form"
+      :actions="false"
+      incomplete-message="No se pudo enviar, revisa las notificaciones"
     >
       <FormKit 
         type="text"
+        label="Nombre"
+        name="name"
+        placeholder="Tu nombre"
+        validation="required|length:3"
+        :validation-messages="{
+          required: 'El nombre es obligatorio',
+          length: 'El nombre es muy corto'
+        }"
       />
 
+      <FormKit type="submit">Crear Cuenta</FormKit>
 
     </FormKit>
 </template>
