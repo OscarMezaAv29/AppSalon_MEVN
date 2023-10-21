@@ -4,8 +4,17 @@
 </script>
 
 <template>
-  <div>
-    <h1>Desde RegisterView</h1>
+    <h1 class="text-6xl font-extrabold text-white text-center mt-10">Crea una cuenta</h1>
+    <p class="text-2xl text-white text-center my-5">Crea una cuenta en AppSalón</p>
 
-  </div>
+
+    <FormKit
+      type="form"
+    >
+      <FormKit 
+        type="text"
+      />
+
+
+    </FormKit>
 </template>
