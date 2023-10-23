@@ -2,21 +2,21 @@ import { createTransport } from '../config/nodemailer.js'
 
 export async function sendEmailVerification({name, email, token}) {
     const transporter = createTransport(
-        "sandbox.smtp.mailtrap.io",
-        2525,
-        "13fecf5ee9c6bd",
-        "a292f1da6ab0a8"
+        process.env.EMAIL_HOST,
+        process.env.EMAIL_PORT,
+        process.env.EMAIL_USER,
+        process.env.EMAIL_PASSWORD
     )
 
     // Enviar el email
     const info = await transporter.sendMail({
-        from: 'AppSalon',
+        from: 'AppSalon <cuentas@appsalon.com>',
         to: email,
         subject: "AppSalon - Confirma tu cuenta",
         text: "AppSalon - Confirma tu cuenta",
         html: `<p>Hola ${name}, confirma tu cuenta en AppSalon</p>
         <p>Tu cuenta está casi lista, solo debes confirmarla en el siguiente enlace</p>
-        <a href="http://localhost:4000/api/auth/verify/${token}">Confirmar cuenta</a>
+        <a href="${process.env.FRONTEND_URL}/auth/confirmar-cuenta/${token}">Confirmar cuenta</a>
         <p>Si tu no creaste esta cuenta, puedes ignorar este mensaje</p>
         `
     })
