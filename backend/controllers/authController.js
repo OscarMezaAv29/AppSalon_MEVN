@@ -102,7 +102,10 @@ const login = async (req, res) => {
 }
 
 const user = async(req, res) => {
-    console.log('Desde user');
+    const { user } = req
+    res.json(
+        user
+    )
 }
 
 
